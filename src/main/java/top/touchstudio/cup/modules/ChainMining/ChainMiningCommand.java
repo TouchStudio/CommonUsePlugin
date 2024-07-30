@@ -32,14 +32,13 @@ public class ChainMiningCommand implements CommandExecutor {
 
         if ("on".equalsIgnoreCase(args[0])) {
             plugin.setChainMiningEnabled(true);
-            ChatUtil.pluginSay(sender, CU.t("&b连锁挖矿已关闭"));
+            ChatUtil.pluginSay(sender, CU.t("&b连锁挖矿已开启"));
         } else if ("off".equalsIgnoreCase(args[0])) {
             plugin.setChainMiningEnabled(false);
             ChatUtil.pluginSay(sender, CU.t("&4连锁挖矿已关闭"));
         } else {
             ChatUtil.pluginSay(sender, CU.t("用法: &6/chainmining &r[&bon&r|&coff&r]"));
         }
-
         return true;
     }
 }
