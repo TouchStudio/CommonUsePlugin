@@ -1,6 +1,7 @@
 package top.touchstudio.cup;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import top.touchstudio.cup.listeners.SneakSpeedTree;
 
 /**
  * @Autho TouchStudio
@@ -12,8 +13,7 @@ public final class CommonUsePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-
+        getServer().getPluginManager().registerEvents(new SneakSpeedTree(),this);
     }
 
     @Override
