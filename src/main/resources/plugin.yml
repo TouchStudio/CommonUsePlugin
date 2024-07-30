@@ -2,3 +2,6 @@ name: CommonUsePlugin
 version: '${version}'
 main: top.touchstudio.cup.CommonUsePlugin
 api-version: '1.21'
+commands:
+  quit:
+    description: quit server

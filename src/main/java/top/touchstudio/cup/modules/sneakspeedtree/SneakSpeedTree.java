@@ -1,4 +1,4 @@
-package top.touchstudio.cup.listeners;
+package top.touchstudio.cup.modules.sneakspeedtree;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
