@@ -2,6 +2,11 @@ name: CommonUsePlugin
 version: '${version}'
 main: top.touchstudio.cup.CommonUsePlugin
 api-version: '1.21'
+author: TouchStudio
 commands:
   quit:
-    description: quit server
+    description: 退出服务器
+  chainmining:
+    description: 连锁挖矿
+  cm:
+    description: 连锁挖矿
