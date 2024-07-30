@@ -1,4 +1,4 @@
-package top.touchstudio.cup.modules.ChainMining;
+package top.touchstudio.cup.modules.chainmining;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -12,11 +12,11 @@ import top.touchstudio.cup.CommonUsePlugin;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ChainMining implements Listener {
+public class ChainMiningListener implements Listener {
 
     private final CommonUsePlugin plugin;
 
-    public ChainMining(CommonUsePlugin plugin) {
+    public ChainMiningListener(CommonUsePlugin plugin) {
         this.plugin = plugin;
     }
 

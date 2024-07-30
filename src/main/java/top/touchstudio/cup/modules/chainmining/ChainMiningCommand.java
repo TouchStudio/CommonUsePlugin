@@ -1,4 +1,4 @@
-package top.touchstudio.cup.modules.ChainMining;
+package top.touchstudio.cup.modules.chainmining;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
