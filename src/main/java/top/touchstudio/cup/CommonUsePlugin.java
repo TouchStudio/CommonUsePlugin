@@ -3,6 +3,10 @@ package top.touchstudio.cup;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.touchstudio.cup.modules.chainmining.ChainMiningListener;
 import top.touchstudio.cup.modules.chainmining.ChainMiningCommand;
+import top.touchstudio.cup.modules.login.CommandInterceptor;
+import top.touchstudio.cup.modules.login.LoginCommand;
+import top.touchstudio.cup.modules.login.PlayerActionListener;
+import top.touchstudio.cup.modules.login.PlayerJoinListener;
 import top.touchstudio.cup.modules.nightvision.NightVisionCommand;
 import top.touchstudio.cup.modules.quit.QuitCommand;
 import top.touchstudio.cup.modules.sneakspeedtree.SneakSpeedTreeListener;
@@ -15,7 +19,7 @@ import top.touchstudio.cup.modules.sneakspeedtree.SneakSpeedTreeListener;
 
 public final class CommonUsePlugin extends JavaPlugin {
 
-    private boolean chainMiningEnabled = false; // 声明变量
+    private boolean chainMiningEnabled = false;
 
     @Override
     public void onEnable() {
@@ -34,6 +38,18 @@ public final class CommonUsePlugin extends JavaPlugin {
         getCommand("nv").setExecutor(new NightVisionCommand());
         getCommand("nightvision").setExecutor(new NightVisionCommand());
         getCommand("夜视").setExecutor(new NightVisionCommand());
+
+        //登录插件
+        LoginCommand loginCommand = new LoginCommand(this);
+        getCommand("reg").setExecutor(loginCommand);
+        getCommand("register").setExecutor(loginCommand);
+        getCommand("l").setExecutor(loginCommand);
+        getCommand("login").setExecutor(loginCommand);
+
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerActionListener(), this);
+        getServer().getPluginManager().registerEvents(new CommandInterceptor(this), this);
+
     }
 
     @Override
