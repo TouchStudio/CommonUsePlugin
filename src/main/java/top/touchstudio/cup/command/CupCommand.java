@@ -19,7 +19,7 @@ public class CupCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-        if (!ModuleMap.get("cup")) {
+        if (!commandSender.isOp()) {
             commandSender.sendMessage("未启用该命令");
             return false;
         }
