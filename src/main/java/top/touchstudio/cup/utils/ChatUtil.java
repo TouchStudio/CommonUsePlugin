@@ -25,6 +25,6 @@ public class ChatUtil {
     }
 
     public static void pluginSay(CommandSender sender, String pluginsay) {
-        sender.sendMessage(ChatColor.WHITE + "[" + ChatColor.AQUA + "CUP" + ChatColor.WHITE + "] " + ChatColor.RESET + pluginsay);
+        sender.sendMessage(ChatColor.WHITE + "[" + ChatColor.AQUA + "CUP" + ChatColor.WHITE + "] " + ChatColor.RESET + CU.t(pluginsay));
     }
 }

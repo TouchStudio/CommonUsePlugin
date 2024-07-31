@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class PlayerDataManager {
 
+    private static final File DATA_FOLDER = new File("plugins/CommonUsePlugin/LoginPlugin/data");
 
     static {
         if (!DATA_FOLDER.exists()) {
