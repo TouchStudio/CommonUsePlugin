@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.entity.Player;
 
-public class  PlayerActionListener implements Listener {
+public class PlayerActionListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {

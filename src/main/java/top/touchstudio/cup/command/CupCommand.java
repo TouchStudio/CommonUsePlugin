@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import top.touchstudio.cup.configs.ModuleConfig;
+import top.touchstudio.cup.utils.ChatUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +21,13 @@ public class CupCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (!commandSender.isOp()) {
-            commandSender.sendMessage("未启用该命令");
+            ChatUtil.pluginSay(commandSender,"&4你不是OP!");
             return false;
         }
 
         Player player = (Player) commandSender;
 
-        if (strings.length <= 1) {
+        if (strings.length == 1) {
             player.sendMessage("-----CUP-----");
             ModuleMap.forEach((moduleName, isEnabled) -> {
                 player.sendMessage("    " + moduleName + ": " + isEnabled);
@@ -38,17 +39,17 @@ public class CupCommand implements CommandExecutor, TabCompleter {
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
             String moduleName = strings[1];
             if (!ModuleList.contains(moduleName)) {
-                player.sendMessage("未找到此模块");
+                ChatUtil.pluginSay(player,"&4未找到此模块!");
                 return true;
             }
-            player.sendMessage("请输入正确的值");
+            ChatUtil.pluginSay(player,"&4请输入正确的值");
             return true;
         }
 
         if (strings.length == 3 && strings[0].equalsIgnoreCase("set")) {
             String moduleName = strings[1];
             if (!ModuleList.contains(moduleName)) {
-                player.sendMessage("未找到此模块");
+                ChatUtil.pluginSay(player,"&4未找到此模块");
                 return true;
             }
             boolean value;
@@ -60,18 +61,18 @@ public class CupCommand implements CommandExecutor, TabCompleter {
                     value = false;
                     break;
                 default:
-                    player.sendMessage("请输入正确的值 (true/false)");
+                    ChatUtil.pluginSay(player,"&6请输入正确的值 &r[&btrue&r | &4false&r]");
                     return true;
             }
 
             ModuleMap.put(moduleName, value);
-            player.sendMessage("已将 " + moduleName + " 设置为 " + value);
+            ChatUtil.pluginSay(player,"&r已将&6"  + moduleName +  "&r设置为&b"  + value + "&r");
             ModuleConfig moduleConfig = new ModuleConfig();
             moduleConfig.reloadConfig();
             return true;
         }
 
-        player.sendMessage("请输入正确的命令格式");
+        ChatUtil.pluginSay(player,"&4请输入正确的命令格式");
         return false;
     }
 

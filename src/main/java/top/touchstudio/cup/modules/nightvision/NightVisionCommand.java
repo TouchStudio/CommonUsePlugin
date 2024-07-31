@@ -10,26 +10,20 @@ import org.jetbrains.annotations.NotNull;
 import top.touchstudio.cup.utils.CU;
 import top.touchstudio.cup.utils.ChatUtil;
 
-import static top.touchstudio.cup.modules.ModuleManager.ModuleMap;
-
 public class NightVisionCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!ModuleMap.get("nightvision")) {
-            sender.sendMessage("未启用该命令");
-            return false;
-        }
 
         if (!(sender instanceof Player)) {
-            ChatUtil.pluginSay(sender, "&4只有玩家可以使用此命令");
+            ChatUtil.pluginSay(sender, CU.t("&4只有玩家可以使用此命令"));
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length > 0) {
-            ChatUtil.pluginSay(sender, "&6用法: &b/nv &6或者 &b/nightvision &6或者 &b/夜视");
+            ChatUtil.pluginSay(sender, CU.t("&6用法: &b/nv &6或者 &b/nightvision &6或者 &b/夜视"));
             return true;
         }
 

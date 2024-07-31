@@ -15,3 +15,6 @@
 
 ### Tpa传送
 指令:  /tpa | /tpa accept | /tpa deny
+
+### 登录
+指令:  /login | /register
