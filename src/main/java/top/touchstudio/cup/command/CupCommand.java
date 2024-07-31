@@ -61,7 +61,7 @@ public class CupCommand implements CommandExecutor, TabCompleter {
                     value = false;
                     break;
                 default:
-                    ChatUtil.pluginSay(player,"&4请输入正确的值 &r[&btrue&r|&4false&r]");
+                    ChatUtil.pluginSay(player,"&6请输入正确的值 &r[&btrue&r | &4false&r]");
                     return true;
             }
 
