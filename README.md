@@ -3,6 +3,7 @@
 
 ### 登录插件
 防止他人利用离线登录盗号
+指令:  /login | /register
 
 ### 跳舞树
 在树旁边快速蹲起催熟树苗
@@ -15,6 +16,3 @@
 
 ### Tpa传送
 指令:  /tpa | /tpa accept | /tpa deny
-
-### 登录
-指令:  /login | /register
