@@ -24,11 +24,6 @@ public class CupCommand implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage("This command can only be run by a player.");
-            return false;
-        }
-
         Player player = (Player) commandSender;
 
         if (strings.length <= 1) {
@@ -38,10 +33,7 @@ public class CupCommand implements CommandExecutor, TabCompleter {
             });
             return true;
         }
-        if (strings.length == 2 && strings[0].equalsIgnoreCase("reload")){
-            ModuleConfig moduleConfig = new ModuleConfig();
-            moduleConfig.reloadConfig();
-        }
+
 
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
             String moduleName = strings[1];
@@ -88,7 +80,6 @@ public class CupCommand implements CommandExecutor, TabCompleter {
         List<String> tab = new ArrayList<>();
         if (strings.length == 1) {
             tab.add("set");
-            tab.add("reload");
         }
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
             tab.addAll(ModuleList);

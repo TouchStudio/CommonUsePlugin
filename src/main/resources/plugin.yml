@@ -6,6 +6,8 @@ author: TouchStudio
 commands:
   cup:
     description: CommonUsePlugin
+  tpa:
+    description: 传送玩家
 
   quit:
     description: 退出服务器

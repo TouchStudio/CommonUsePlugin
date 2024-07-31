@@ -12,3 +12,6 @@
 
 ### 夜视
 指令:  /nv | /nightvision | /夜视
+
+### Tpa传送
+指令:  /tpa | /tpa accept | /tpa deny

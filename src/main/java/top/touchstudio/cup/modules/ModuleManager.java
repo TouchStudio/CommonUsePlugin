@@ -4,6 +4,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import top.touchstudio.cup.command.CupCommand;
 import top.touchstudio.cup.CommonUsePlugin;
 import top.touchstudio.cup.configs.ModuleConfig;
+import top.touchstudio.cup.modules.tpa.Tpa;
 import top.touchstudio.cup.utils.CommandUtil;
 
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class ModuleManager {
         ModuleList.add("chainmining");
         ModuleList.add("nightvision");
         ModuleList.add("login");
+        ModuleList.add("tpa");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -54,6 +56,16 @@ public class ModuleManager {
         }else {
             CommandUtil.unregisterCommand(plugin,"quit");
         }
+
+        //tpa
+
+        if (ModuleMap.get("tpa")){
+            plugin.getCommand("tpa").setExecutor(new Tpa());
+            plugin.getServer().getPluginManager().registerEvents(new Tpa(),plugin);
+        }else {
+            CommandUtil.unregisterCommand(plugin,"tpa");
+        }
+
 
 
         //连锁挖矿
