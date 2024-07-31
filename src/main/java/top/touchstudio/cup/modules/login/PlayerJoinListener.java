@@ -1,6 +1,7 @@
 package top.touchstudio.cup.modules.login;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.SimpleCommandMap;
@@ -23,7 +24,7 @@ public class PlayerJoinListener implements Listener {
 
     private final CommonUsePlugin plugin;
     private final Map<UUID, BukkitRunnable> playerTimers = new HashMap<>();
-    private static final long TIMEOUT = 40 * 20L; // 1 minute in ticks
+    private static final long TIMEOUT = 40 * 20L; //40 = 40秒
 
     public PlayerJoinListener(CommonUsePlugin plugin) {
         this.plugin = plugin;
@@ -40,7 +41,7 @@ public class PlayerJoinListener implements Listener {
             disableAllCommandsForPlayer(player);
             startTimeoutTask(player);
         } else {
-            player.sendMessage("请使用 /l 或 /login 登录");
+            ChatUtil.pluginSay(player,"请使用 &6/l &b<密码> &r登录账号");
             PlayerDataManager.setPlayerRegistering(player, true);
             disableAllCommandsForPlayer(player);
             startTimeoutTask(player);
@@ -74,7 +75,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
         if (PlayerDataManager.isPlayerLocked(player)) {
             event.setCancelled(true);
-            player.sendMessage("请先完成注册或登录。");
+            ChatUtil.pluginSay(player,"&4请先完成注册或登录!");
         }
     }
 
@@ -107,7 +108,7 @@ public class PlayerJoinListener implements Listener {
             @Override
             public void run() {
                 if (PlayerDataManager.isPlayerRegistering(player)) {
-                    player.kickPlayer("输入密码超时，请重新连接并尝试输入密码。");
+                    player.kickPlayer(ChatColor.RED + "输入密码超时!");
                 }
                 playerTimers.remove(player.getUniqueId());
             }
