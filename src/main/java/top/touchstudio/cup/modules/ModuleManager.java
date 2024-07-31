@@ -6,6 +6,8 @@ import top.touchstudio.cup.CommonUsePlugin;
 import top.touchstudio.cup.configs.ModuleConfig;
 import top.touchstudio.cup.modules.chainmining.ChainMiningCommand;
 import top.touchstudio.cup.modules.chainmining.ChainMiningListener;
+import top.touchstudio.cup.modules.deathhead.DeathHead;
+import top.touchstudio.cup.modules.hat.HatCommand;
 import top.touchstudio.cup.modules.login.CommandInterceptor;
 import top.touchstudio.cup.modules.login.PlayerActionListener;
 import top.touchstudio.cup.modules.login.PlayerJoinListener;
@@ -40,6 +42,8 @@ public class ModuleManager {
         ModuleList.add("nightvision");
         ModuleList.add("login");
         ModuleList.add("tpa");
+        ModuleList.add("hat");
+        ModuleList.add("deathhead");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -66,12 +70,23 @@ public class ModuleManager {
         }
 
         //tpa
-
         if (ModuleMap.get("tpa")){
             plugin.getCommand("tpa").setExecutor(new Tpa());
             plugin.getServer().getPluginManager().registerEvents(new Tpa(),plugin);
         }else {
             CommandUtil.unregisterCommand(plugin,"tpa");
+        }
+
+        //hat
+        if (ModuleMap.get("hat")){
+            plugin.getCommand("hat").setExecutor(new HatCommand());
+        }else {
+            CommandUtil.unregisterCommand(plugin,"hat");
+        }
+
+        //deathhead
+        if (ModuleMap.get("deathhead")){
+            plugin.getServer().getPluginManager().registerEvents(new DeathHead(),plugin);
         }
 
 
