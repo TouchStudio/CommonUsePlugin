@@ -2,17 +2,8 @@ name: CommonUsePlugin
 version: '${version}'
 main: top.touchstudio.cup.CommonUsePlugin
 api-version: '1.21'
-author: TouchStudio
 commands:
-  quit:
-    description: 退出服务器
-  chainmining:
-    description: 连锁挖矿
-  cm:
-    description: 连锁挖矿
-  nv:
-    description: 给玩家夜视效果~
-  nightvision:
-    description: 给玩家夜视效果~
-  夜视:
-    description: 给玩家夜视效果~
+  cup:
+    description: cup
+    default: op
+
