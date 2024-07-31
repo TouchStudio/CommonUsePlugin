@@ -16,14 +16,14 @@ public class NightVisionCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (!(sender instanceof Player)) {
-            ChatUtil.pluginSay(sender, "&4只有玩家可以使用此命令");
+            ChatUtil.pluginSay(sender, CU.t("&4只有玩家可以使用此命令"));
             return true;
         }
 
         Player player = (Player) sender;
 
         if (args.length > 0) {
-            ChatUtil.pluginSay(sender, "&6用法: &b/nv &6或者 &b/nightvision &6或者 &b/夜视");
+            ChatUtil.pluginSay(sender, CU.t("&6用法: &b/nv &6或者 &b/nightvision &6或者 &b/夜视"));
             return true;
         }
 
