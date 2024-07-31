@@ -16,3 +16,11 @@ commands:
     description: 给玩家夜视效果~
   夜视:
     description: 给玩家夜视效果~
+  reg:
+    description: 注册命令
+  register:
+    description: 注册命令
+  l:
+    description: 登录命令
+  login:
+    description: 登录命令
