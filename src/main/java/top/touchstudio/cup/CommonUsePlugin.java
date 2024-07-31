@@ -15,7 +15,7 @@ import top.touchstudio.cup.modules.sneakspeedtree.SneakSpeedTreeListener;
 
 public final class CommonUsePlugin extends JavaPlugin {
 
-    private boolean chainMiningEnabled = false; // 声明变量
+    private boolean chainMiningEnabled = false;
 
     @Override
     public void onEnable() {
@@ -26,7 +26,7 @@ public final class CommonUsePlugin extends JavaPlugin {
         getCommand("quit").setExecutor(new QuitCommand());
 
         //连锁挖矿
-        getServer().getPluginManager().registerEvents(new ChainMiningListener(this), this); // 传递插件实例
+        getServer().getPluginManager().registerEvents(new ChainMiningListener(this), this);
         getCommand("chainmining").setExecutor(new ChainMiningCommand(this));
         getCommand("cm").setExecutor(new ChainMiningCommand(this));
 
