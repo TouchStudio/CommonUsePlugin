@@ -87,7 +87,7 @@ public class LoginCommand implements CommandExecutor {
             PlayerDataManager.setPlayerLoginStatus(player, true);
             PlayerDataManager.restorePlayerInventory(player);
             PlayerDataManager.clearPlayerRegistering(player);
-            ChatUtil.pluginSay(player,"&lb登录成功!");
+            ChatUtil.pluginSay(player,"&l登录成功!");
             return true;
         }
 

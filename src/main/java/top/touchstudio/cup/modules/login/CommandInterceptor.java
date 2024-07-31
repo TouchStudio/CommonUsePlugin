@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.entity.Player;
 import top.touchstudio.cup.CommonUsePlugin;
+import top.touchstudio.cup.utils.ChatUtil;
 
 public class CommandInterceptor implements Listener {
 
@@ -27,7 +28,7 @@ public class CommandInterceptor implements Listener {
                 return;
             } else {
                 // 禁用其他指令
-                player.sendMessage("请先完成注册或登录。");
+                ChatUtil.pluginSay(player,"&4请先完成注册或登录!");
                 event.setCancelled(true);
             }
         }
