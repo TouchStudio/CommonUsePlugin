@@ -8,3 +8,6 @@
 
 ### 夜视
 指令:  /nv | /nightvision | /夜视
+
+### QUIT
+指令:  /quit
