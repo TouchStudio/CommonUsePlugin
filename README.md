@@ -16,3 +16,15 @@
 
 ### Tpa传送
 指令:  /tpa | /tpa accept | /tpa deny
+
+### Hat 带上帽子
+指令:  /hat
+
+### 死亡掉头
+击杀玩家后掉落玩家头颅
+
+### Back 返回死亡地点
+指令:  /back
+
+### Money 金钱
+指令: /money info | /money pay | /money set | money add 
