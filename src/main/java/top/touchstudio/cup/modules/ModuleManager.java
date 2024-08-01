@@ -12,6 +12,8 @@ import top.touchstudio.cup.modules.hat.HatCommand;
 import top.touchstudio.cup.modules.login.CommandInterceptor;
 import top.touchstudio.cup.modules.login.PlayerActionListener;
 import top.touchstudio.cup.modules.login.PlayerJoinListener;
+import top.touchstudio.cup.modules.money.MoneyCommand;
+import top.touchstudio.cup.modules.money.MoneyEvent;
 import top.touchstudio.cup.modules.nightvision.NightVisionCommand;
 import top.touchstudio.cup.modules.quit.QuitCommand;
 import top.touchstudio.cup.modules.sneakspeedtree.SneakSpeedTreeListener;
@@ -46,6 +48,7 @@ public class ModuleManager {
         ModuleList.add("hat");
         ModuleList.add("deathhead");
         ModuleList.add("back");
+        ModuleList.add("money");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -97,6 +100,14 @@ public class ModuleManager {
             plugin.getServer().getPluginManager().registerEvents(new BackCommand(),plugin);
         }else {
             CommandUtil.unregisterCommand(plugin,"back");
+        }
+
+        //money
+        if (ModuleMap.get("money")){
+            plugin.getServer().getPluginManager().registerEvents(new MoneyEvent(),plugin);
+            plugin.getCommand("money").setExecutor(new MoneyCommand());
+        }else {
+            CommandUtil.unregisterCommand(plugin,"money");
         }
 
 
