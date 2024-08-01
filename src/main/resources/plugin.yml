@@ -10,6 +10,8 @@ commands:
     description: 传送玩家
   hat:
     description: 将主手物品戴在头上
+  back:
+    description: 返回死亡地点
   quit:
     description: 退出服务器
   chainmining:

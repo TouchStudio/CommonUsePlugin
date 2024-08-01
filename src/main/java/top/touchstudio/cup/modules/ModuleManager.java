@@ -4,6 +4,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import top.touchstudio.cup.command.CupCommand;
 import top.touchstudio.cup.CommonUsePlugin;
 import top.touchstudio.cup.configs.ModuleConfig;
+import top.touchstudio.cup.modules.back.BackCommand;
 import top.touchstudio.cup.modules.chainmining.ChainMiningCommand;
 import top.touchstudio.cup.modules.chainmining.ChainMiningListener;
 import top.touchstudio.cup.modules.deathhead.DeathHead;
@@ -44,6 +45,7 @@ public class ModuleManager {
         ModuleList.add("tpa");
         ModuleList.add("hat");
         ModuleList.add("deathhead");
+        ModuleList.add("back");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -87,6 +89,14 @@ public class ModuleManager {
         //deathhead
         if (ModuleMap.get("deathhead")){
             plugin.getServer().getPluginManager().registerEvents(new DeathHead(),plugin);
+        }
+
+        //back
+        if (ModuleMap.get("back")){
+            plugin.getCommand("back").setExecutor(new BackCommand());
+            plugin.getServer().getPluginManager().registerEvents(new BackCommand(),plugin);
+        }else {
+            CommandUtil.unregisterCommand(plugin,"back");
         }
 
 
