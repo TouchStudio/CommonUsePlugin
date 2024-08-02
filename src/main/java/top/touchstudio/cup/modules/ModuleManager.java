@@ -5,6 +5,7 @@ import top.touchstudio.cup.command.CupCommand;
 import top.touchstudio.cup.CommonUsePlugin;
 import top.touchstudio.cup.configs.ModuleConfig;
 import top.touchstudio.cup.modules.back.BackCommand;
+import top.touchstudio.cup.modules.bestgamamode.*;
 import top.touchstudio.cup.modules.chainmining.ChainMiningCommand;
 import top.touchstudio.cup.modules.chainmining.ChainMiningListener;
 import top.touchstudio.cup.modules.deathhead.DeathHead;
@@ -49,6 +50,7 @@ public class ModuleManager {
         ModuleList.add("deathhead");
         ModuleList.add("back");
         ModuleList.add("money");
+        ModuleList.add("bestgamemode");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -154,7 +156,38 @@ public class ModuleManager {
         }
 
 
+        //bestgamemode [gm0|gm1|gm2]
+        if (ModuleMap.get("bestgamemode")){
+            plugin.getCommand("gm").setExecutor(new BestGamemode());
+
+            plugin.getCommand("gm0").setExecutor(new Gm0());
+            plugin.getCommand("生存模式").setExecutor(new Gm0());
+
+            plugin.getCommand("gm1").setExecutor(new Gm1());
+            plugin.getCommand("创造模式").setExecutor(new Gm1());
+
+            plugin.getCommand("gm2").setExecutor(new Gm2());
+            plugin.getCommand("冒险模式").setExecutor(new Gm2());
+
+            plugin.getCommand("gm3").setExecutor(new Gm3());
+            plugin.getCommand("旁观模式").setExecutor(new Gm3());
+
+        }else {
+            CommandUtil.unregisterCommand(plugin,"gm");
+
+            CommandUtil.unregisterCommand(plugin,"gm0");
+            CommandUtil.unregisterCommand(plugin,"生存模式");
+
+            CommandUtil.unregisterCommand(plugin,"gm1");
+            CommandUtil.unregisterCommand(plugin,"创造模式");
+
+            CommandUtil.unregisterCommand(plugin,"gm2");
+            CommandUtil.unregisterCommand(plugin,"冒险模式");
+
+            CommandUtil.unregisterCommand(plugin,"gm3");
+            CommandUtil.unregisterCommand(plugin,"旁观模式");
 
 
+        }
     }
 }

@@ -34,3 +34,21 @@ commands:
     description: 登录命令
   login:
     description: 登录命令
+  gm:
+    description: BestGamemode
+  gm0:
+    description: 设置为生存模式
+  生存模式:
+    description: 设置为生存模式
+  gm1:
+    description: 设置为创造模式
+  创造模式:
+    description: 设置为创造模式
+  gm2:
+    description: 设置为冒险模式
+  冒险模式:
+    description: 设置为冒险模式
+  gm3:
+    description: 设置为旁观模式
+  旁观模式:
+    description: 设置为旁观模式

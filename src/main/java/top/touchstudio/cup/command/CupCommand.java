@@ -27,7 +27,7 @@ public class CupCommand implements CommandExecutor, TabCompleter {
 
         Player player = (Player) commandSender;
 
-        if (strings.length >= 1 && strings[0].equalsIgnoreCase("info")) {
+        if (strings.length <= 1) {
             player.sendMessage("-----CUP-----");
             ModuleMap.forEach((moduleName, isEnabled) -> {
                 player.sendMessage("    " + moduleName + ": " + isEnabled);
@@ -35,6 +35,13 @@ public class CupCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        if (strings.length == 2 && strings[0].equalsIgnoreCase("info")) {
+            player.sendMessage("-----CUP-----");
+            ModuleMap.forEach((moduleName, isEnabled) -> {
+                player.sendMessage("    " + moduleName + ": " + isEnabled);
+            });
+            return true;
+        }
 
         if (strings.length == 2 && strings[0].equalsIgnoreCase("set")) {
             String moduleName = strings[1];
