@@ -10,6 +10,8 @@ import top.touchstudio.cup.CommonUsePlugin;
 import top.touchstudio.cup.utils.CU;
 import top.touchstudio.cup.utils.ChatUtil;
 
+import static top.touchstudio.cup.modules.chainmining.ChainMiningListener.CMMap;
+
 public class ChainMiningCommand implements CommandExecutor {
 
     private final CommonUsePlugin plugin;
@@ -31,10 +33,10 @@ public class ChainMiningCommand implements CommandExecutor {
         }
 
         if ("on".equalsIgnoreCase(args[0])) {
-            plugin.setChainMiningEnabled(true);
+            CMMap.put((Player) sender,true);
             ChatUtil.pluginSay(sender, CU.t("&b连锁挖矿已开启"));
         } else if ("off".equalsIgnoreCase(args[0])) {
-            plugin.setChainMiningEnabled(false);
+            CMMap.put((Player) sender,false);
             ChatUtil.pluginSay(sender, CU.t("&4连锁挖矿已关闭"));
         } else {
             ChatUtil.pluginSay(sender, CU.t("用法: &6/chainmining &r[&bon&r|&coff&r]"));

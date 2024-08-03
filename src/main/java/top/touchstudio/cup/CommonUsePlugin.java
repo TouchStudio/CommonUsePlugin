@@ -15,8 +15,6 @@ import java.io.IOException;
  */
 
 public final class CommonUsePlugin extends JavaPlugin {
-
-    private boolean chainMiningEnabled = false;
     public static CommonUsePlugin instance;
 
     @Override
@@ -46,13 +44,4 @@ public final class CommonUsePlugin extends JavaPlugin {
         }
     }
 
-
-    //连锁挖矿
-    public boolean isChainMiningEnabled() {
-        return chainMiningEnabled;
-    }
-
-    public void setChainMiningEnabled(boolean enabled) {
-        this.chainMiningEnabled = enabled;
-    }
 }

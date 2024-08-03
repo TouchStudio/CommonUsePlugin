@@ -3,12 +3,14 @@ package top.touchstudio.cup.modules.chainmining;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import top.touchstudio.cup.CommonUsePlugin;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,13 +21,13 @@ public class ChainMiningListener implements Listener {
     public ChainMiningListener(CommonUsePlugin plugin) {
         this.plugin = plugin;
     }
+    public static HashMap<Player,Boolean> CMMap = new HashMap<>();
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if (!plugin.isChainMiningEnabled()) {
+        if (!CMMap.containsKey(event.getPlayer()) || !CMMap.get(event.getPlayer())) {
             return;
         }
-
         Block block = event.getBlock();
         ItemStack tool = event.getPlayer().getInventory().getItemInMainHand();
 
