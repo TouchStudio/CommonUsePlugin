@@ -8,7 +8,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import top.touchstudio.cup.configs.MoneyConfig;
+import top.touchstudio.cup.configs.PlayerConfig;
 import top.touchstudio.cup.utils.CU;
 import top.touchstudio.cup.utils.ChatUtil;
 
@@ -27,7 +27,7 @@ public class MoneyCommand implements CommandExecutor, TabExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         Player player = (Player) commandSender;
         if ((strings.length <= 1 && strings[0].equalsIgnoreCase("info"))){
-            int playerMoney = MoneyConfig.moneyConfig.getInt(player.getName() + ".money");
+            int playerMoney = PlayerConfig.playerConfig.getInt(player.getName() + ".money");
             ChatUtil.pluginSay(player,"您目前有 " + playerMoney + " 米");
             return true;
         }
@@ -47,8 +47,8 @@ public class MoneyCommand implements CommandExecutor, TabExecutor {
                 ChatUtil.pluginSay(player,"&4请输入数字");
                 return false;
             }
-            int playerMoney = MoneyConfig.moneyConfig.getInt(player.getName() + ".money");
-            int payToMoney = MoneyConfig.moneyConfig.getInt(payTo.getName() + ".money");
+            int playerMoney = PlayerConfig.playerConfig.getInt(player.getName() + ".money");
+            int payToMoney = PlayerConfig.playerConfig.getInt(payTo.getName() + ".money");
 
             if (playerMoney < Integer.parseInt(strings[2])){
                 ChatUtil.pluginSay(player,"您的余额不足");
@@ -57,10 +57,10 @@ public class MoneyCommand implements CommandExecutor, TabExecutor {
             payToMoney += Integer.parseInt(strings[2]);
             playerMoney -= Integer.parseInt(strings[2]);
 
-            MoneyConfig.moneyConfig.set(player.getName() + ".money",playerMoney);
-            MoneyConfig.moneyConfig.set(payTo.getName() + ".money",payToMoney);
+            PlayerConfig.playerConfig.set(player.getName() + ".money",playerMoney);
+            PlayerConfig.playerConfig.set(payTo.getName() + ".money",payToMoney);
             try {
-                MoneyConfig.moneyConfig.save(MoneyConfig.moneyConfigFile);
+                PlayerConfig.playerConfig.save(PlayerConfig.playerConfigFile);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -87,9 +87,9 @@ public class MoneyCommand implements CommandExecutor, TabExecutor {
                 ChatUtil.pluginSay(player,"&4请输入数字");
                 return false;
             }
-            MoneyConfig.moneyConfig.set(setTo.getName() + ".money",Integer.parseInt(strings[2]));
+            PlayerConfig.playerConfig.set(setTo.getName() + ".money",Integer.parseInt(strings[2]));
             try {
-                MoneyConfig.moneyConfig.save(MoneyConfig.moneyConfigFile);
+                PlayerConfig.playerConfig.save(PlayerConfig.playerConfigFile);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -116,11 +116,11 @@ public class MoneyCommand implements CommandExecutor, TabExecutor {
                 ChatUtil.pluginSay(player,"&4请输入数字");
                 return false;
             }
-            int addToMoney = MoneyConfig.moneyConfig.getInt(addTo.getName() + ".money");
+            int addToMoney = PlayerConfig.playerConfig.getInt(addTo.getName() + ".money");
             addToMoney += Integer.parseInt(strings[2]);
-            MoneyConfig.moneyConfig.set(addTo.getName() + ".money",addToMoney);
+            PlayerConfig.playerConfig.set(addTo.getName() + ".money",addToMoney);
             try {
-                MoneyConfig.moneyConfig.save(MoneyConfig.moneyConfigFile);
+                PlayerConfig.playerConfig.save(PlayerConfig.playerConfigFile);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

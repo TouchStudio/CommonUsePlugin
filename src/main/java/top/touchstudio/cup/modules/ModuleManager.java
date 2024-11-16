@@ -10,6 +10,7 @@ import top.touchstudio.cup.modules.chainmining.ChainMiningCommand;
 import top.touchstudio.cup.modules.chainmining.ChainMiningListener;
 import top.touchstudio.cup.modules.deathhead.DeathHead;
 import top.touchstudio.cup.modules.hat.HatCommand;
+import top.touchstudio.cup.modules.home.HomeCommand;
 import top.touchstudio.cup.modules.login.CommandInterceptor;
 import top.touchstudio.cup.modules.login.PlayerActionListener;
 import top.touchstudio.cup.modules.login.PlayerJoinListener;
@@ -51,6 +52,7 @@ public class ModuleManager {
         ModuleList.add("back");
         ModuleList.add("money");
         ModuleList.add("bestgamemode");
+        ModuleList.add("home");
 
         ModuleConfig moduleConfig = new ModuleConfig();
         try {
@@ -188,6 +190,13 @@ public class ModuleManager {
             CommandUtil.unregisterCommand(plugin,"旁观模式");
 
 
+        }
+
+        //home
+        if (ModuleMap.get("home")){
+            plugin.getCommand("home").setExecutor(new HomeCommand());
+        }else {
+            CommandUtil.unregisterCommand(plugin,"home");
         }
     }
 }

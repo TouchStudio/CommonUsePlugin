@@ -3,7 +3,7 @@ package top.touchstudio.cup;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.touchstudio.cup.configs.ModuleConfig;
-import top.touchstudio.cup.configs.MoneyConfig;
+import top.touchstudio.cup.configs.PlayerConfig;
 import top.touchstudio.cup.modules.ModuleManager;
 
 import java.io.IOException;
@@ -24,9 +24,9 @@ public final class CommonUsePlugin extends JavaPlugin {
         ModuleManager moduleManager = new ModuleManager();
         moduleManager.onServerStart(this);
 
-        MoneyConfig moneyConfig = new MoneyConfig();
+        PlayerConfig playerConfig = new PlayerConfig();
         try {
-            moneyConfig.onServerStart(this);
+            playerConfig.onServerStart(this);
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }

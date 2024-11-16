@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import top.touchstudio.cup.configs.ModuleConfig;
 import top.touchstudio.cup.utils.ChatUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,33 +54,59 @@ public class CupCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (strings.length == 3 && strings[0].equalsIgnoreCase("set")) {
-            String moduleName = strings[1];
-            if (!ModuleList.contains(moduleName)) {
-                ChatUtil.pluginSay(player,"&4未找到此模块");
-                return true;
-            }
-            boolean value;
-            switch (strings[2]) {
-                case "true":
-                    value = true;
-                    break;
-                case "false":
-                    value = false;
-                    break;
-                default:
-                    ChatUtil.pluginSay(player,"&6请输入正确的值 &r[&btrue&r | &4false&r]");
-                    return true;
+        for (String key : ModuleConfig.modulesSection.getConfigurationSection(strings[1]).getKeys(false)) {
+            if (strings.length == 4 && strings[2].equalsIgnoreCase(key)) {
+                String moduleName = strings[1];
+                switch (key) {
+
+                    case "IsEnable":
+
+                        if (!ModuleList.contains(moduleName)) {
+                            ChatUtil.pluginSay(player, "&4未找到此模块");
+                            break;
+                        }
+                        boolean value = false;
+                        switch (strings[3]) {
+                            case "true":
+                                value = true;
+                                break;
+                            case "false":
+                                value = false;
+                                break;
+                            default:
+                                ChatUtil.pluginSay(player, "&6请输入正确的值 &r[&btrue&r | &4false&r]");
+                                break;
+                        }
+
+                        ModuleMap.put(moduleName, value);
+                        ChatUtil.pluginSay(player, "&r已将&6" + moduleName + "&r设置为&b" + value + "&r");
+                        ModuleConfig moduleConfig = new ModuleConfig();
+                        moduleConfig.reloadConfig();
+                        break;
+
+                    default:
+                        if (!ModuleList.contains(moduleName)) {
+                            ChatUtil.pluginSay(player, "&4未找到此模块");
+                            break;
+                        }
+                        ModuleConfig.modulesSection.set(moduleName + "." + key, strings[3]);
+                        ChatUtil.pluginSay(player, "&r已将&6" + moduleName + "." + key + "&r设置为&b" + strings[3] + "&r");
+                        try {
+                            ModuleConfig.moduleConfig.save(ModuleConfig.moduleConfigFile);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        break;
+
+
+                }
+                continue;
+
             }
 
-            ModuleMap.put(moduleName, value);
-            ChatUtil.pluginSay(player,"&r已将&6"  + moduleName +  "&r设置为&b"  + value + "&r");
-            ModuleConfig moduleConfig = new ModuleConfig();
-            moduleConfig.reloadConfig();
-            return true;
         }
 
-        ChatUtil.pluginSay(player,"&4请输入正确的命令格式");
+
         return false;
     }
 
@@ -94,6 +121,10 @@ public class CupCommand implements CommandExecutor, TabCompleter {
             tab.addAll(ModuleList);
         }
         if (strings.length == 3 && strings[0].equalsIgnoreCase("set")) {
+            tab.addAll(ModuleConfig.modulesSection.getConfigurationSection(strings[1]).getKeys(false));
+
+        }
+        if (strings.length == 4 && strings[2].equalsIgnoreCase("IsEnable")) {
             tab.add("true");
             tab.add("false");
         }

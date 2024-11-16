@@ -3,7 +3,7 @@ package top.touchstudio.cup.modules.money;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import top.touchstudio.cup.configs.MoneyConfig;
+import top.touchstudio.cup.configs.PlayerConfig;
 
 /**
  * @Autho BaicaijunOvO
@@ -15,7 +15,7 @@ public class MoneyEvent implements Listener {
 
     @EventHandler
     public static void onPlayerJoin(PlayerJoinEvent event){
-        MoneyConfig.createPlayerData(event.getPlayer());
+        PlayerConfig.createPlayerData(event.getPlayer());
     }
 
 }

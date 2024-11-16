@@ -28,3 +28,6 @@
 
 ### Money 金钱
 指令: /money info | /money pay | /money set | money add 
+
+### Home 
+指令 /home | /home set | /home delete | / home list

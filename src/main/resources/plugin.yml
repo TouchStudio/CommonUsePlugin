@@ -52,3 +52,5 @@ commands:
     description: 设置为旁观模式
   旁观模式:
     description: 设置为旁观模式
+  home:
+    description: home

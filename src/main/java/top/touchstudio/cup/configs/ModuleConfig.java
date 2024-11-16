@@ -34,10 +34,8 @@ public class ModuleConfig {
             for (String name : ModuleManager.ModuleList) {
                 modulesSection.createSection(name);
                 modulesSection.set(name + ".IsEnable",true);
-                if (name.equals("chainmining")){
-                    modulesSection.set(name + ".IsEnable",false);
-                }
             }
+            modulesSection.set("home.MaxHome",5);
             moduleConfig.save(moduleConfigFile);
 
         }
@@ -46,7 +44,9 @@ public class ModuleConfig {
         for (String name : ModuleManager.ModuleList) {
             ModuleManager.ModuleMap.put(name, modulesSection.getBoolean(name + ".IsEnable"));
             plugin.getServer().getConsoleSender().sendMessage(name + ": " + modulesSection.getBoolean(name + ".IsEnable"));
+
         }
+        plugin.getServer().getConsoleSender().sendMessage("home.MaxHome" + ": " + modulesSection.getInt("home" + ".MaxHome"));
 
     }
 
