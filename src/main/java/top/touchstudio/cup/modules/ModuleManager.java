@@ -198,5 +198,7 @@ public class ModuleManager {
         }else {
             CommandUtil.unregisterCommand(plugin,"home");
         }
+
+
     }
 }

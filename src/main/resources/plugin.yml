@@ -1,7 +1,7 @@
 name: CommonUsePlugin
 version: '${version}'
 main: top.touchstudio.cup.CommonUsePlugin
-api-version: '1.21'
+api-version: '1.20'
 author: TouchStudio
 commands:
   cup:
